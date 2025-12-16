@@ -1,57 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Birthday Cake 🎂</title>
-  <link rel="stylesheet" href="stylee.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Cake 🎂</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: #E6E6FA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.cake-container {
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+  position: relative;
+}
+
+/* Draggable circular images */
+.draggable {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  cursor: grab;
+  touch-action: none;
+  position: absolute;
+}
+
+/* Cake */
+.cake-top {
+  width: 100%;
+  height: 240px;
+  background: linear-gradient(to bottom, #E6E6FA, #d8b4ff); /* lavender */
+  border-radius: 50% 50% 45% 45%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+  margin-top: 60px;
+}
+
+.cake-message {
+  position: absolute;
+  top: 95px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  color: #9b5de5;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.cake-shadow {
+  width: 70%;
+  height: 35px;
+  margin: auto;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.25), transparent 70%);
+  border-radius: 50%;
+  margin-top: 10px;
+}
+
+/* Glitters */
+.glitters {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, #fff 2px, transparent 3px),
+    radial-gradient(circle, #cdb4ff 2px, transparent 3px),
+    radial-gradient(circle, #ffafcc 2px, transparent 3px);
+  background-size: 24px 24px;
+  animation: sparkle 2.5s linear infinite;
+}
+
+@keyframes sparkle {
+  to { background-position: 24px 24px; }
+}
+
+/* Candles */
+.candles {
+  position: absolute;
+  top: 18px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.candle {
+  width: 10px;
+  height: 42px;
+  background: linear-gradient(#ffd166, #f77f00);
+  border-radius: 4px;
+  position: relative;
+}
+
+.flame {
+  width: 12px;
+  height: 16px;
+  background: radial-gradient(circle, #ffd166, #ff7b00, transparent);
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  animation: flicker 0.6s infinite alternate;
+}
+
+@keyframes flicker {
+  to { transform: translateX(-50%) scale(0.85); }
+}
+
+/* Snowflakes */
+.snowflakes span {
+  position: fixed;
+  top: -10%;
+  color: violet;
+  animation: snow 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes snow {
+  to { transform: translateY(120vh); opacity: 0; }
+}
+
+/* Music Button */
+.music-player {
+  position: fixed;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.music-player button {
+  padding: 10px 18px;
+  font-size: 14px;
+  border: none;
+  border-radius: 20px;
+  background: #9b5de5;
+  color: white;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.25);
+  cursor: pointer;
+}
+
+.music-player button.playing {
+  background: #6a0dad;
+}
+
+.hint {
+  font-size: 14px;
+  color: #4b0082;
+  margin-top: 5px;
+}
+
+/* Heart animation */
+.heart {
+  position: absolute;
+  font-size: 20px;
+  animation: rise 2s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes rise {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-150px) scale(1.5); opacity: 0; }
+}
+</style>
 </head>
 <body>
 
-  <!-- Snowflakes -->
-  <div class="snowflakes">
-    <span>❄</span><span>❄</span><span>❄</span><span>❄</span>
-    <span>❄</span><span>❄</span><span>❄</span><span>❄</span>
+<div class="cake-container">
+  <!-- Draggable Images -->
+  <img src="1db4a3d6-d9b5-46d7-bbd8-59560e682baa.jpg" class="draggable" style="top:0; left:0;">
+  <img src="9a461b04-db28-4cd8-a4b1-ed2bca7e1146.jpg" class="draggable" style="top:0; left:100px;">
+  <img src="cut.jpg" class="draggable" style="top:400px; left:0;">
+  <img src="d857089a-2b02-4630-8d66-9a9663141707.jpg" class="draggable" style="top:400px; left:100px;">
+
+  <!-- Cake -->
+  <div class="cake-top">
+    <div class="glitters"></div>
+    <div class="candles">
+      <div class="candle"><div class="flame"></div></div>
+      <div class="candle"><div class="flame"></div></div>
+      <div class="candle"><div class="flame"></div></div>
+    </div>
+    <div class="cake-message">Wala na nga pera papabili pa ng cake!!!</div>
   </div>
 
-  <div class="cake-container">
+  <div class="cake-shadow"></div>
+</div>
 
-    <!-- 🔼 TOP IMAGES (2) -->
-    <div class="image-row top-images">
-      <img src="top1.png" alt="Top Image 1">
-      <img src="top2.png" alt="Top Image 2">
-    </div>
+<!-- Music -->
+<div class="music-player">
+  <button id="musicBtn">▶ Play Music</button>
+  <p class="hint">Tap the music button to play 🎵</p>
+  <audio id="bgMusic" src="wwd.mp3juice.blog - Katy Perry - Birthday (Lyrics).mp3" loop preload="auto"></audio>
+</div>
 
-    <!-- Cake -->
-    <div class="cake-top">
+<script>
+// ===== DRAGGABLE IMAGES =====
+let topZIndex = 1000;
+const draggables = document.querySelectorAll('.draggable');
 
-      <!-- Candles -->
-      <div class="candles">
-        <div class="candle"><div class="flame"></div></div>
-        <div class="candle"><div class="flame"></div></div>
-        <div class="candle"><div class="flame"></div></div>
-      </div>
+draggables.forEach(el => {
+  let startX=0, startY=0;
+  let offsetX=0, offsetY=0;
+  let dragging=false;
 
-      <!-- Glitters -->
-      <div class="glitters"></div>
+  el.addEventListener('pointerdown', e => {
+    dragging = true;
+    el.setPointerCapture(e.pointerId);
+    startX = e.clientX;
+    startY = e.clientY;
+    offsetX = el.offsetLeft;
+    offsetY = el.offsetTop;
+    topZIndex++;
+    el.style.zIndex = topZIndex;
+  });
 
-      <!-- Message -->
-      <div class="cake-message">
-        Wala na nga pera<br>pabili kapa ng cake
-      </div>
+  el.addEventListener('pointermove', e => {
+    if(!dragging) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    let newX = offsetX + dx;
+    let newY = offsetY + dy;
 
-    </div>
+    const maxX = window.innerWidth - el.offsetWidth;
+    const maxY = window.innerHeight - el.offsetHeight;
+    newX = Math.max(0, Math.min(newX, maxX));
+    newY = Math.max(0, Math.min(newY, maxY));
 
-    <!-- Shadow -->
-    <div class="cake-shadow"></div>
+    el.style.left = newX + "px";
+    el.style.top = newY + "px";
+  });
 
-    <!-- 🔽 BOTTOM IMAGES (2) -->
-    <div class="image-row bottom-images">
-      <img src="bottom1.png" alt="Bottom Image 1">
-      <img src="bottom2.png" alt="Bottom Image 2">
-    </div>
+  el.addEventListener('pointerup', e => dragging = false);
+  el.addEventListener('pointercancel', e => dragging = false);
+});
 
-  </div>
+// ===== MUSIC BUTTON + HEARTS =====
+const musicBtn = document.getElementById('musicBtn');
+const bgMusic = document.getElementById('bgMusic');
+let heartInterval;
 
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.style.left = `${Math.random() * 90 + 5}%`;
+  heart.style.color = `hsl(${Math.random() * 360}, 80%, 60%)`;
+  heart.textContent = '💖';
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 2000);
+}
+
+function startHearts() {
+  heartInterval = setInterval(createHeart, 300);
+}
+
+function stopHearts() {
+  clearInterval(heartInterval);
+}
+
+musicBtn.addEventListener('click', () => {
+  if (bgMusic.paused) {
+    bgMusic.play();
+    musicBtn.classList.add('playing');
+    startHearts();
+  } else {
+    bgMusic.pause();
+    musicBtn.classList.remove('playing');
+    stopHearts();
+  }
+});
+</script>
 </body>
 </html>
