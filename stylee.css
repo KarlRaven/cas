@@ -1,0 +1,170 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: #E6E6FA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.cake-container {
+  position: relative;
+  width: 320px;
+  text-align: center;
+}
+
+/* ================= IMAGE ROWS ================= */
+.image-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  position: relative;
+  z-index: 5;
+}
+
+.image-row img {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.top-images {
+  margin-bottom: -20px;
+}
+
+.bottom-images {
+  margin-top: 20px;
+}
+
+/* ================= CAKE ================= */
+.cake-top {
+  position: relative;
+  width: 300px;
+  height: 250px;
+  background: linear-gradient(to bottom, #fff, #ffd6ff);
+  border-radius: 50% 50% 45% 45%;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+  overflow: hidden;
+  margin: auto;
+}
+
+/* Message */
+.cake-message {
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  color: #9b5de5;
+  text-shadow: 1px 1px 2px rgba(0,0,0,.2);
+  z-index: 3;
+}
+
+/* Shadow */
+.cake-shadow {
+  width: 220px;
+  height: 40px;
+  background: radial-gradient(ellipse, rgba(0,0,0,.25), transparent 70%);
+  border-radius: 50%;
+  margin: auto;
+}
+
+/* ================= GLITTERS ================= */
+.glitters {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle, #fff 2px, transparent 3px),
+    radial-gradient(circle, #cdb4ff 2px, transparent 3px),
+    radial-gradient(circle, #ffafcc 2px, transparent 3px);
+  background-size: 30px 30px;
+  animation: sparkle 2.5s linear infinite;
+  z-index: 1;
+}
+
+@keyframes sparkle {
+  from { background-position: 0 0; }
+  to { background-position: 30px 30px; }
+}
+
+/* ================= CANDLES ================= */
+.candles {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  z-index: 4;
+}
+
+.candle {
+  width: 12px;
+  height: 45px;
+  background: linear-gradient(#ffd166, #f77f00);
+  border-radius: 5px;
+  position: relative;
+}
+
+.candle::before {
+  content: "";
+  width: 2px;
+  height: 6px;
+  background: #333;
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.flame {
+  width: 12px;
+  height: 18px;
+  background: radial-gradient(circle, #ffd166, #ff7b00, transparent);
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  animation: flicker .7s infinite alternate;
+}
+
+@keyframes flicker {
+  from { transform: translateX(-50%) scale(1); }
+  to { transform: translateX(-50%) scale(.85); }
+}
+
+/* ================= SNOWFLAKES ================= */
+.snowflakes span {
+  position: fixed;
+  top: -10%;
+  color: violet;
+  font-size: 18px;
+  animation: snow 10s linear infinite;
+  pointer-events: none;
+}
+
+.snowflakes span:nth-child(odd) {
+  font-size: 24px;
+  animation-duration: 12s;
+}
+
+@keyframes snow {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(120vh); opacity: 0; }
+}
+
+.snowflakes span:nth-child(1) { left: 5%; }
+.snowflakes span:nth-child(2) { left: 15%; }
+.snowflakes span:nth-child(3) { left: 30%; }
+.snowflakes span:nth-child(4) { left: 45%; }
+.snowflakes span:nth-child(5) { left: 60%; }
+.snowflakes span:nth-child(6) { left: 70%; }
+.snowflakes span:nth-child(7) { left: 85%; }
+.snowflakes span:nth-child(8) { left: 95%; }
